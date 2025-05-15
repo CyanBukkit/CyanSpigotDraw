@@ -1,3 +1,5 @@
+ import java.nio.file.Files
+
 plugins {
     kotlin("jvm") version "1.9.20-RC2"
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0"
@@ -14,10 +16,11 @@ repositories {
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     implementation(kotlin("stdlib-jdk8"))
-    compileOnly("org.black_ixx:playerpoints:3.2.6")
     compileOnly("com.comphenix.protocol:ProtocolLib:4.8.0")
     // fastjson
     implementation("com.alibaba:fastjson:1.2.83")
+//  导入 加载 "libs/CyanPoints-1.0.jar"
+    compileOnly(files("libs/CyanPoints-1.0.jar"))
 }
 
 bukkit {
@@ -26,7 +29,7 @@ bukkit {
     version = project.version.toString()
     description = ""
     website = "https://cyanbukkit.cn"
-    depend = listOf("PlayerPoints")
+    depend = listOf("CyanPoints")
 }
 
 kotlin {

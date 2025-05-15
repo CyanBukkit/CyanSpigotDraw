@@ -2,8 +2,6 @@ package cn.cyanbukkit.aiimage
 
 import cn.cyanbukkit.aiimage.listener.PlayerListener
 import cn.cyanbukkit.aiimage.listener.PluginCommands
-import org.black_ixx.playerpoints.PlayerPoints
-import org.black_ixx.playerpoints.PlayerPointsAPI
 import org.bukkit.command.Command
 import org.bukkit.command.SimpleCommandMap
 import org.bukkit.configuration.file.YamlConfiguration
@@ -46,13 +44,10 @@ class SpigotDraw : JavaPlugin() {
     }
 
 
-    lateinit var pointsAPI: PlayerPointsAPI
-
 
     override fun onEnable() {
         instance = this
         saveDefaultConfig()
-        pointsAPI = PlayerPoints.getInstance().api
         logger.info("On Spigot Text generator Picture is enabled!")
         apiKey = config.getString("ApiKey")!!
         if (apiKey.isEmpty()) {

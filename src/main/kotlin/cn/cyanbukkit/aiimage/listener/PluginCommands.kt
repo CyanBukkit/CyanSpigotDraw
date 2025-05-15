@@ -4,6 +4,7 @@ import cn.cyanbukkit.aiimage.SpigotDraw
 import cn.cyanbukkit.aiimage.data.ImageStatus
 import cn.cyanbukkit.aiimage.image.DownloadImage.connectHttp
 import cn.cyanbukkit.aiimage.image.DownloadImage.getImageAndView
+import cn.cyanbukkit.points.data.PlayerPointsAPI
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
 import org.bukkit.command.Command
@@ -45,10 +46,12 @@ class PluginCommands : Command(
             }
             "start" -> {
                 val need = SpigotDraw.instance.config.getInt("NeedPoints")
-                val now = SpigotDraw.instance.pointsAPI.look(sender.uniqueId)
-                if (now < need) {
-                    sender.sendMessage("§c你的积分不足需要${need}你现在只有${now}")
-                    return true
+                val now = PlayerPointsAPI.look(sender)
+                if (PlayerPointsAPI.isPayLimit(sender)) {
+                    if (now < need) {
+                        sender.sendMessage("§c你的积分不足需要${need}你现在只有${now}")
+                        return true
+                    }
                 }
                 sender.sendMessage("""
                     §a§l在聊天框输入画面中的文字时，请务必注意描述方式、顺序和措辞等，以便更清晰地展现画面效果

@@ -2,6 +2,7 @@ package cn.cyanbukkit.aiimage.listener
 
 import cn.cyanbukkit.aiimage.SpigotDraw
 import cn.cyanbukkit.aiimage.image.ImageStart
+import cn.cyanbukkit.points.data.PlayerPointsAPI
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -26,12 +27,12 @@ object PlayerListener :  org.bukkit.event.Listener {
                 return
             }
             val need = SpigotDraw.instance.config.getInt("NeedPoints")
-            if (SpigotDraw.instance.pointsAPI.take(p.uniqueId, need)) {
+            if (PlayerPointsAPI.take(p, need)) {
                 ImageStart(e.player).start(e.message)
                 e.player.sendMessage("§a§l已开始制作图片....")
                 start.remove(e.player)
             } else {
-                p.sendMessage("§c支付失败 你的积分不足需要${need}你现在只有${SpigotDraw.instance.pointsAPI.look(p.uniqueId)}")
+                p.sendMessage("§c支付失败 你的积分不足需要${need}你现在只有${PlayerPointsAPI.look(p)}")
                 start.remove(e.player)
             }
         }

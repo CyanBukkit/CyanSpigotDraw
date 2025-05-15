@@ -2,6 +2,7 @@ package cn.cyanbukkit.aiimage.image
 
 import cn.cyanbukkit.aiimage.SpigotDraw
 import cn.cyanbukkit.aiimage.image.DownloadImage.connectHttp
+import cn.cyanbukkit.points.data.PlayerPointsAPI
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
 import org.bukkit.entity.Player
@@ -21,7 +22,7 @@ class ImageStart(
         if (callback.responseCode != 200) {
             player.sendMessage("§cError与管理员反馈，点券已返还")
             val need = SpigotDraw.instance.config.getInt("NeedPoints")
-            SpigotDraw.instance.pointsAPI.give(player.uniqueId, need)
+            PlayerPointsAPI.give(player, need)
             return
         }
         val rawJson = String(callback.inputStream.readBytes())
@@ -37,7 +38,7 @@ class ImageStart(
         } else {
             player.sendMessage("§cError与管理员反馈，点券已返还")
             val need = SpigotDraw.instance.config.getInt("NeedPoints")
-            SpigotDraw.instance.pointsAPI.give(player.uniqueId, need)
+            PlayerPointsAPI.give(player, need)
             return
         }
 

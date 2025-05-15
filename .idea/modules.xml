@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CodeCyanBukkit.CyanSpigotDraw.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CodeCyanBukkit.CyanSpigotDraw.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CyanBukkit.CyanSpigotDraw.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CyanBukkit.CyanSpigotDraw.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CyanSpigotDraw.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CyanSpigotDraw.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CyanSpigotDraw.test.iml" filepath="$PROJECT_DIR$/.idea/modules/CyanSpigotDraw.test.iml" />
